@@ -60,7 +60,7 @@
         app:srcCompat="@drawable/petclass" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editTextCorreoLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCorreoLogin"
         app:layout_constraintVertical_bias="0.151" />
 
     <Button
