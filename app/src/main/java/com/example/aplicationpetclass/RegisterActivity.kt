@@ -75,6 +75,10 @@ class RegisterActivity<FirebaseUser> : AppCompatActivity() {
                     if (idNuevoUsuario != -1L) {
                         // Usuario registrado con éxito
                         mostrarMensaje("Usuario registrado con éxito")
+                        // Redirigir a la pantalla de inicio de sesión (MainActivity)
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish() // Esto cierra la actividad actual para que el usuario no pueda regresar a la pantalla de registro presionando "Atrás"
                     } else {
                         // Error al registrar el usuario
                         mostrarMensaje("usuario ya esxiste")
@@ -116,7 +120,7 @@ class RegisterActivity<FirebaseUser> : AppCompatActivity() {
 
         if (idNuevoUsuario != -1L) {
             // Éxito al registrar el usuario
-            Toast.makeText(this, "Usuario registrado con ID: $idNuevoUsuario", Toast.LENGTH_SHORT).show()
+
         } else {
             // Error al registrar el usuario
             Toast.makeText(this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show()

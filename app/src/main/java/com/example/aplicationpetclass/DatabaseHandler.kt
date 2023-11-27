@@ -1,5 +1,6 @@
 package com.example.aplicationpetclass
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -19,6 +20,8 @@ class DatabaseHandler(context: Context) :
         private const val KEY_TELEFONO = "telefono"
         private const val KEY_CORREO = "correo"
         private const val KEY_CONTRASENA = "contrasena"
+        private const val KEY_LOGUEADO = "logueado"
+
     }
 
     override fun onCreate(db: SQLiteDatabase) {

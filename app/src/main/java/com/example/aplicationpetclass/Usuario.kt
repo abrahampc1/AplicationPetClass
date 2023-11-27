@@ -1,4 +1,5 @@
 package com.example.aplicationpetclass
+import java.io.Serializable
 
 // Usuario.kt
 
@@ -9,4 +10,4 @@ data class Usuario(
     val telefono: String,
     val correo: String,
     val contrasena: String
-)
+) : Serializable

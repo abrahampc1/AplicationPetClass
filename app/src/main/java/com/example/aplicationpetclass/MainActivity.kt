@@ -42,6 +42,8 @@ class MainActivity : AppCompatActivity() {
           // Aquí puedes navegar a la siguiente pantalla o realizar acciones necesarias
           val lanzar2 = Intent(this, MainScreen::class.java)
           startActivity(lanzar2)
+
+
         } else {
           // Las credenciales no coinciden o no existen en la base de datos
           mostrarMensaje("Correo o contraseña incorrectas")
