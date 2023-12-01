@@ -1,5 +1,6 @@
 package com.example.aplicationpetclass
 
+import GPS_Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,7 +35,7 @@ class MainScreen : AppCompatActivity() {
 
         val button4= findViewById<ImageView>(R.id.imgGPS)
         button4.setOnClickListener{
-            val lanzar = Intent(this, GPS_Activity::class.java)
+            val lanzar = Intent(this, MapsActivity::class.java)
             startActivity(lanzar)
         }
 
@@ -43,6 +44,13 @@ class MainScreen : AppCompatActivity() {
         img.setOnClickListener{
             val lanzar69 = Intent(this, MainActivity::class.java)
             startActivity(lanzar69)
+        }
+
+
+        val img1= findViewById<ImageView>(R.id.imgAlarm)
+        img1.setOnClickListener{
+            val lanzar68 = Intent(this, Alarm_Activity::class.java)
+            startActivity(lanzar68)
         }
 
         }
