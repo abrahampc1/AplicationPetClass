@@ -43,10 +43,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/toolbar4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -106,13 +106,13 @@
         app:layout_constraintStart_toEndOf="@+id/imgGPS"
         app:layout_constraintTop_toBottomOf="@+id/txtOptions"
         app:layout_constraintVertical_bias="0.115"
-        app:srcCompat="@drawable/reloj" />
+        app:srcCompat="@drawable/diversidad" />
 
     <TextView
         android:id="@+id/txtAlarma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alarma"
+        android:text="Comunidad"
         app:layout_constraintBottom_toTopOf="@+id/toolbar4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.573"
@@ -169,40 +169,14 @@
         app:layout_constraintVertical_bias="0.243" />
 
     <Button
-        android:id="@+id/btnInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inicio"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar4"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar4"
-        app:layout_constraintVertical_bias="0.562" />
-
-    <Button
-        android:id="@+id/btnPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Perfil"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar4"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toEndOf="@+id/btnInicio"
-        app:layout_constraintTop_toTopOf="@+id/toolbar4"
-        app:layout_constraintVertical_bias="0.625" />
-
-    <Button
         android:id="@+id/btnSalir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salir"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
-        app:layout_constraintStart_toEndOf="@+id/btnPerfil"
-        app:layout_constraintTop_toTopOf="@+id/toolbar4"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar4" />
 
     <ImageView
         android:id="@+id/imgCerrarSesion"
@@ -211,10 +185,10 @@
         android:layout_marginTop="88dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toEndOf="@+id/txtBienvenido"
         app:layout_constraintTop_toTopOf="@+id/toolbar3"
-        app:layout_constraintVertical_bias="0.001"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cerrarsesion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

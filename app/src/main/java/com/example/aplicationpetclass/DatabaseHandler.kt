@@ -3,9 +3,10 @@ package com.example.aplicationpetclass
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.database.Cursor
+
 
 class DatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -74,4 +75,28 @@ class DatabaseHandler(context: Context) :
         cursor.close()
         return existe
     }
+
+    @SuppressLint("Range")
+    fun obtenerDatosUsuarioPorCorreo(correoParam: String): Usuario? {
+        val db = this.readableDatabase
+        var usuario: Usuario? = null
+
+        val query = "SELECT * FROM $TABLE_NAME WHERE $KEY_CORREO = ? OR $KEY_TELEFONO = ?"
+        val cursor = db.rawQuery(query, arrayOf(correoParam))
+
+        if (cursor.moveToFirst()) {
+            val id = cursor.getInt(cursor.getColumnIndex(KEY_ID))
+            val nombre = cursor.getString(cursor.getColumnIndex(KEY_NOMBRE))
+            val apellido = cursor.getString(cursor.getColumnIndex(KEY_APELLIDO))
+            val correoBD = cursor.getString(cursor.getColumnIndex(KEY_CORREO))
+            val telefonoBD = cursor.getString(cursor.getColumnIndex(KEY_TELEFONO))
+            val contrasena = cursor.getString(cursor.getColumnIndex(KEY_CONTRASENA))
+
+            usuario = Usuario(id, nombre, apellido, telefonoBD, correoBD, contrasena)
+        }
+
+        cursor.close()
+        return usuario
+    }
+
 }

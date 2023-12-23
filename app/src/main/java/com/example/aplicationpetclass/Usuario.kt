@@ -4,7 +4,7 @@ import java.io.Serializable
 // Usuario.kt
 
 data class Usuario(
-    val id: Int = -1,
+    val id: Int = 1,
     val nombre: String,
     val apellido: String,
     val telefono: String,

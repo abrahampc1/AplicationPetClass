@@ -1,5 +1,6 @@
 package com.example.aplicationpetclass
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,7 +29,6 @@ class MainActivity : AppCompatActivity() {
       startActivity(lanzar)
     }
 
-
     btnInicioSesion.setOnClickListener {
       val correo = editTextCorreoLogin.text.toString()
       val contrasena = editTextContrasenaLogin.text.toString()
@@ -37,22 +37,35 @@ class MainActivity : AppCompatActivity() {
         val db = DatabaseHandler(this)
 
         if (db.verificarCredenciales(correo, contrasena)) {
-          // Las credenciales son correctas, el usuario puede iniciar sesión
+          val usuario = db.obtenerDatosUsuarioPorCorreo(correo) // Obtener datos del usuario
+
+          // Si el usuario existe, navega a Perfil_Activity pasando los datos
+          usuario?.let {
+            val intent = Intent(this, Perfil_Activity::class.java)
+            // Pasar los datos del usuario como extras al intent
+            intent.putExtra("usuario", usuario)
+            startActivity(intent)
+          }
+
           mostrarMensaje("Inicio de sesión exitoso")
-          // Aquí puedes navegar a la siguiente pantalla o realizar acciones necesarias
-          val lanzar2 = Intent(this, MainScreen::class.java)
-          startActivity(lanzar2)
-
-
         } else {
-          // Las credenciales no coinciden o no existen en la base de datos
           mostrarMensaje("Correo o contraseña incorrectas")
         }
       } else {
         mostrarMensaje("Por favor, complete todos los campos")
       }
     }
+
   }
+
+  // Esta función puede ser parte de tu lógica de inicio de sesión exitosa
+  private fun guardarCorreoUsuario(correo: String) {
+    val sharedPreferences = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putString("correo", correo)
+    editor.apply()
+  }
+
 
   private fun mostrarMensaje(mensaje: String) {
     Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()

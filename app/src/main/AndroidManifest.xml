@@ -18,7 +18,10 @@
         android:theme="@style/Theme.AplicationPetClass"
         tools:targetApi="31">
         <activity
-            android:name=".Alarm_Activity"
+            android:name=".Monitoreo"
+            android:exported="false" />
+        <activity
+            android:name=".Health_Activity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -35,6 +38,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
 
+        <activity
+            android:name=".EmergenciaMaps"
+            android:exported="false"
+            android:label="@string/title_activity_emergencia_maps" />
+        <activity
+            android:name=".Alarm_Activity"
+            android:exported="false" />
         <activity
             android:name=".MapsActivity"
             android:exported="false"
