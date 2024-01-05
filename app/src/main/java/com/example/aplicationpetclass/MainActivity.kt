@@ -8,22 +8,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 
+// MainActivity
 class MainActivity : AppCompatActivity() {
 
   private lateinit var editTextCorreoLogin: EditText
   private lateinit var editTextContrasenaLogin: EditText
 
   override fun onCreate(savedInstanceState: Bundle?) {
-
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
     val btnInicioSesion = findViewById<Button>(R.id.btnLogin)
-
     editTextCorreoLogin = findViewById(R.id.editTextCorreoLogin)
     editTextContrasenaLogin = findViewById(R.id.editTextTextPassword)
 
-    val button= findViewById<Button>(R.id.btnRegister)
+    val button = findViewById<Button>(R.id.btnRegister)
     button.setOnClickListener{
       val lanzar = Intent(this, RegisterActivity::class.java)
       startActivity(lanzar)
@@ -39,15 +38,11 @@ class MainActivity : AppCompatActivity() {
         if (db.verificarCredenciales(correo, contrasena)) {
           val usuario = db.obtenerDatosUsuarioPorCorreo(correo) // Obtener datos del usuario
 
-          // Si el usuario existe, navega a Perfil_Activity pasando los datos
-          usuario?.let {
-            val intent = Intent(this, Perfil_Activity::class.java)
-            // Pasar los datos del usuario como extras al intent
-            intent.putExtra("usuario", usuario)
-            startActivity(intent)
-          }
+          // Guardar los datos del usuario en SharedPreferences
+          guardarDatosUsuario(usuario)
 
-          mostrarMensaje("Inicio de sesión exitoso")
+          val intent = Intent(this, MainScreen::class.java)
+          startActivity(intent)
         } else {
           mostrarMensaje("Correo o contraseña incorrectas")
         }
@@ -55,17 +50,21 @@ class MainActivity : AppCompatActivity() {
         mostrarMensaje("Por favor, complete todos los campos")
       }
     }
-
   }
 
-  // Esta función puede ser parte de tu lógica de inicio de sesión exitosa
-  private fun guardarCorreoUsuario(correo: String) {
-    val sharedPreferences = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    editor.putString("correo", correo)
-    editor.apply()
+  private fun guardarDatosUsuario(usuario: Usuario?) {
+    usuario?.let {
+      val sharedPreferences = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
+      val editor = sharedPreferences.edit()
+      editor.putInt("id", usuario.id)
+      editor.putString("nombre", usuario.nombre)
+      editor.putString("apellido", usuario.apellido)
+      editor.putString("telefono", usuario.telefono)
+      editor.putString("correo", usuario.correo)
+      editor.putString("contrasena", usuario.contrasena)
+      editor.apply()
+    }
   }
-
 
   private fun mostrarMensaje(mensaje: String) {
     Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
