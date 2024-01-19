@@ -61,6 +61,15 @@
         <activity
             android:name=".MainScreen"
             android:exported="false" />
+
+        <activity
+            android:name=".RegisterPetActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EmergencyMainCard"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

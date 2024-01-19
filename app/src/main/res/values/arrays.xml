@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pet_types">
+        <item>Perro</item>
+        <item>Gato</item>
+    </array>
+</resources>

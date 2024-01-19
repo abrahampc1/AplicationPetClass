@@ -38,14 +38,25 @@ class MainScreen : AppCompatActivity() {
 
         val img2 = findViewById<ImageView>(R.id.imgEmergency)
         img2.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/maps/search/veterinario/@24.7703655,-107.4189796,16.59z?hl=es-419&entry=ttu"))
-            startActivity(intent)
+            val lanzar = Intent(this, EmergencyMainCard::class.java)
+            startActivity(lanzar)
         }
 
         val img67 = findViewById<ImageView>(R.id.imgHealth)
         img67.setOnClickListener{
-            val lanzar0 = Intent(this, Monitoreo::class.java)
-            startActivity(lanzar0)
+            // Obtener el ID del usuario desde SharedPreferences
+            val sharedPreferences = getSharedPreferences("Usuario", Context.MODE_PRIVATE)
+            val idUsuario = sharedPreferences.getInt("id", -1)
+
+            // Verificar si el ID es válido antes de iniciar RegisterPetActivity
+            if (idUsuario != -1) {
+                // Pasar el ID del usuario a RegisterPetActivity
+                val intent = Intent(this, RegisterPetActivity::class.java)
+                intent.putExtra("idUsuario", idUsuario)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error: ID de usuario no válido", Toast.LENGTH_SHORT).show()
+            }
         }
 
         val botonPerfil = findViewById<Button>(R.id.btnPerfilUsuario)
