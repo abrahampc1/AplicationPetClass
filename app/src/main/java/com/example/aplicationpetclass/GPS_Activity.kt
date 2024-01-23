@@ -22,7 +22,7 @@ import android.Manifest
 
 
 
-class GPS_Activity : AppCompatActivity(), OnMapReadyCallback {
+abstract class GPS_Activity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -34,11 +34,11 @@ class GPS_Activity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.webView) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        // Solicitar permisos al abrir la app
-        requestLocationPermissions()
+        /*
 
         val button3 = findViewById<Button>(R.id.btnInicioGPS)
         button3.setOnClickListener {
@@ -63,7 +63,9 @@ class GPS_Activity : AppCompatActivity(), OnMapReadyCallback {
             getLocation() // Aquí se llama a la función getLocation() cuando se presiona el botón
         }
     }
+*/
 
+        /*
     private fun requestLocationPermissions() {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -135,5 +137,8 @@ class GPS_Activity : AppCompatActivity(), OnMapReadyCallback {
 
     companion object {
         private const val PERMISSION_REQUEST_CODE = 100
+    }
+
+    */
     }
 }
