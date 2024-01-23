@@ -32,8 +32,8 @@ class MainScreen : AppCompatActivity() {
 
         val img1 = findViewById<ImageView>(R.id.imgAlarm)
         img1.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/impetclass/"))
-            startActivity(intent)
+            val lanzar = Intent(this, MapView::class.java)
+            startActivity(lanzar)
         }
 
         val img2 = findViewById<ImageView>(R.id.imgEmergency)
